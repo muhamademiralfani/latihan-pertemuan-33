@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addTodo, currentTodo, deleteTodo, updateTodo } from '../redux/slices/todosSlice';
 
 const TodoList = () => {
-  const { language, todos, loading, error, isSuccess } = useSelector((state) => state.todos);
+  const { todos, loading, error, isSuccess } = useSelector((state) => state.todos);
+  const { language } = useSelector((state) => state.language);
   const dispatch = useDispatch();
 
   // useEffect(() => {
