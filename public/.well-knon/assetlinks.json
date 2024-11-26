@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.vercel.latihan_todolist.twa",
+        "sha256_cert_fingerprints": ["55:D5:F3:48:9A:4A:B6:F3:51:F3:2E:40:53:74:C0:7A:22:61:F3:38:CC:55:F9:B1:FC:F9:70:BA:F8:E8:73:84"]
+      }
+    }]
