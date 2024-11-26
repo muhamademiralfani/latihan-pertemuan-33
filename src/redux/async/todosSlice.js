@@ -45,6 +45,7 @@ const todosSlice = createSlice({
       state.todo = action.payload;
       state.isUpdate = true;
     },
+
     clearCurrentTodo: (state) => {
       state.todo = {};
       state.isUpdate = false;

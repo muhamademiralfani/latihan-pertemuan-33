@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, updateTodo } from '../redux/async/todosSlice';
+import { addTodo, updateTodo, clearCurrentTodo } from '../redux/slices/todosSlice';
 import { v4 as uuidv4 } from 'uuid';
 
 const TodoInput = () => {
   const dispatch = useDispatch();
-  const { isUpdate, todo, loading, clearCurrentTodo } = useSelector((state) => state.todos);
+  const { isUpdate, todo, loading } = useSelector((state) => state.todos);
   const [text, setText] = useState('');
   const { language } = useSelector((state) => state.language);
 
@@ -23,7 +22,9 @@ const TodoInput = () => {
     if (!text.trim()) return;
 
     if (isUpdate) {
-      dispatch(updateTodo({ ...todo, text }, clearCurrentTodo)).then(() => {});
+      dispatch(updateTodo({ id: todo.id, text })).then(() => {
+        dispatch(clearCurrentTodo()); // Clear current todo after update
+      });
     } else {
       dispatch(addTodo({ id: uuidv4(), text, completed: false }));
     }

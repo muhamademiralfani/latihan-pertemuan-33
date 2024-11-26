@@ -4,6 +4,8 @@ const initialState = {
   todos: [],
   todo: null,
   isUpdate: false,
+  loading: false,
+  error: null,
 };
 
 const todosSlice = createSlice({
@@ -35,8 +37,12 @@ const todosSlice = createSlice({
       state.todo = action.payload;
       state.isUpdate = true;
     },
+    clearCurrentTodo: (state) => {
+      state.todo = null;
+      state.isUpdate = false;
+    },
   },
 });
 
-export const { addTodo, deleteTodo, toggleTodo, updateTodo, currentTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo, toggleTodo, updateTodo, currentTodo, clearCurrentTodo } = todosSlice.actions;
 export default todosSlice.reducer;
